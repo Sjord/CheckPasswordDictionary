@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using CheckPasswordDictionary.Data;
 using CheckPasswordDictionary.Models;
 using CheckPasswordDictionary.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace CheckPasswordDictionary
 {
@@ -50,6 +51,8 @@ namespace CheckPasswordDictionary
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<IPasswordValidator<ApplicationUser>, CheckPasswordDictionary>();
 
             services.AddMvc();
 
